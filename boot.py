@@ -50,6 +50,7 @@ class RoomLight:
         <html>
             <head>
                 <title>Room Light</title>
+                <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
                 <style>
                     .off {
                         background-color: black;
@@ -62,10 +63,10 @@ class RoomLight:
                 </style>
             </head>""" + """
             <body class="{state}">
-                <div>
-                    <h3 class="{state}">The lights are {state} currently</h3>
+                <div class="container">
+                    <h1 class="{state}" style="text-align: center;">The lights are {state} currently</h1>
                     <form action="/turn{otherState}" method="get">
-                        <button type="submit">Turn {otherState}</button>
+                        <button type="submit" class="btn btn-outline-secondary">Turn {otherState}</button>
                     </form>
                 </div>
             </body>
@@ -115,4 +116,5 @@ while True:
         # handlePin(val)
         rl.handleRequest(val)
         cl.send(rl.serveHTML())
+        cl.send("\r\n")
         cl.close()
